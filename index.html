@@ -31,7 +31,7 @@
       position: fixed;
       pointer-events: none;
       z-index: 9999;
-      transition: all 0.1s ease;
+      transition: none;
       transform: translate(-50%, -50%);
     }
 
@@ -43,7 +43,7 @@
       position: fixed;
       pointer-events: none;
       z-index: 9998;
-      transition: all 0.3s ease;
+      transition: all 0.05s ease;
       transform: translate(-50%, -50%);
     }
 
@@ -300,7 +300,8 @@
     }
 
     .hero-stats span {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       font-size: 1.1rem;
       padding: 10px 15px;
       margin: 0;
@@ -311,6 +312,7 @@
       animation: bounce 2s infinite;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.9);
       white-space: nowrap;
+      line-height: 1;
     }
 
     @keyframes bounce {
@@ -1136,10 +1138,12 @@
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
-      setTimeout(() => {
+      
+      // Use requestAnimationFrame for smoother follower movement
+      requestAnimationFrame(() => {
         follower.style.left = e.clientX + 'px';
         follower.style.top = e.clientY + 'px';
-      }, 100);
+      });
     });
 
     // Navbar Scroll Effect
